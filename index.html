@@ -1,1 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>ICAD Drawing Management System</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#eef2f7;
+}
+
+header{
+    background:#0b5cab;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+header h1{
+    margin:0;
+}
+
+.search{
+    padding:25px;
+    text-align:center;
+}
+
+.search input{
+
+    width:420px;
+    max-width:90%;
+    padding:12px;
+    font-size:18px;
+    border:1px solid #ccc;
+    border-radius:8px;
+
+}
+
+.container{
+
+    width:95%;
+    max-width:1100px;
+    margin:auto;
+
+}
+
+.card{
+
+    background:white;
+
+    border-radius:10px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.15);
+
+    padding:20px;
+
+}
+
+.info{
+
+    display:flex;
+
+    gap:40px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:20px;
+
+}
+
+.item{
+
+    min-width:220px;
+
+}
+
+.label{
+
+    color:#777;
+
+    font-size:14px;
+
+}
+
+.value{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+}
+
+.button{
+
+    display:inline-block;
+
+    background:#0b5cab;
+
+    color:white;
+
+    padding:10px 20px;
+
+    text-decoration:none;
+
+    border-radius:6px;
+
+}
+
+.button:hover{
+
+    background:#084a89;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>ICAD Drawing Management System</h1>
+
+<div>図面・HTML3D管理システム</div>
+
+</header>
+
+<div class="search">
+
+<input id="searchBox" placeholder="注番検索...">
+
+</div>
+
+<div class="container" id="list">
+
+
+
+<div class="card">
+
+<div class="info">
+
+<div class="item">
+
+<div class="label">📅 日付</div>
+
+<div class="value">2026/07/14</div>
+
+</div>
+
+<div class="item">
+
+<div class="label">🔖 注番</div>
+
+<div class="value part">JT2857</div>
+
+</div>
+
+<div class="item">
+
+<div class="label">👤 担当</div>
+
+<div class="value">Giang</div>
+
+</div>
+
+</div>
+
+<a class="button" href="html/A001245.html" target="_blank">
+
+🧊 HTML 3D View
+
+</a>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="info">
+
+<div class="item">
+
+<div class="label">📅 日付</div>
+
+<div class="value">2026/07/12</div>
+
+</div>
+
+<div class="item">
+
+<div class="label">🔖 注番</div>
+
+<div class="value part">JT2860</div>
+
+</div>
+
+<div class="item">
+
+<div class="label">👤 担当</div>
+
+<div class="value">Sato</div>
+
+</div>
+
+</div>
+
+<a class="button" href="html/B000531.html" target="_blank">
+
+🧊 HTML 3D View
+
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+const search=document.getElementById("searchBox");
+
+search.addEventListener("keyup",()=>{
+
+let keyword=search.value.toUpperCase();
+
+document.querySelectorAll(".card").forEach(card=>{
+
+let part=card.querySelector(".part").innerText.toUpperCase();
+
+card.style.display=part.includes(keyword)?"block":"none";
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>
