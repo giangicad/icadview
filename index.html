@@ -1,250 +1,74 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>ICAD Drawing Management System</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ICAD HTML 3D Library</title>
 <style>
-
-body{
-    margin:0;
-    font-family:Arial,Helvetica,sans-serif;
-    background:#eef2f7;
-}
-
-header{
-    background:#0b5cab;
-    color:white;
-    padding:20px;
-    text-align:center;
-}
-
-header h1{
-    margin:0;
-}
-
-.search{
-    padding:25px;
-    text-align:center;
-}
-
-.search input{
-
-    width:420px;
-    max-width:90%;
-    padding:12px;
-    font-size:18px;
-    border:1px solid #ccc;
-    border-radius:8px;
-
-}
-
-.container{
-
-    width:95%;
-    max-width:1100px;
-    margin:auto;
-
-}
-
-.card{
-
-    background:white;
-
-    border-radius:10px;
-
-    margin-bottom:20px;
-
-    box-shadow:0 2px 8px rgba(0,0,0,.15);
-
-    padding:20px;
-
-}
-
-.info{
-
-    display:flex;
-
-    gap:40px;
-
-    flex-wrap:wrap;
-
-    margin-bottom:20px;
-
-}
-
-.item{
-
-    min-width:220px;
-
-}
-
-.label{
-
-    color:#777;
-
-    font-size:14px;
-
-}
-
-.value{
-
-    font-size:20px;
-
-    font-weight:bold;
-
-}
-
-.button{
-
-    display:inline-block;
-
-    background:#0b5cab;
-
-    color:white;
-
-    padding:10px 20px;
-
-    text-decoration:none;
-
-    border-radius:6px;
-
-}
-
-.button:hover{
-
-    background:#084a89;
-
-}
-
+body{margin:0;font-family:Arial,sans-serif;background:#eef2f7}
+header{background:#0b5cab;color:#fff;padding:18px;text-align:center}
+header h1{margin:0}
+.search{padding:18px;text-align:center}
+.search input{width:420px;max-width:90%;padding:10px;font-size:17px;border-radius:8px;border:1px solid #ccc}
+#gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;padding:20px}
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.15);transition:.2s}
+.card:hover{transform:translateY(-4px)}
+.preview{height:180px;background:#d9e3ef;display:flex;align-items:center;justify-content:center;font-size:64px}
+.info{padding:14px}
+.part{font-size:22px;font-weight:bold}
+.date{color:#666;font-size:14px}
+.btn{display:block;margin-top:12px;text-align:center;background:#0b5cab;color:#fff;text-decoration:none;padding:10px;border-radius:8px}
+.btn:hover{background:#084887}
 </style>
-
 </head>
-
 <body>
-
 <header>
-
-<h1>ICAD Drawing Management System</h1>
-
-<div>図面・HTML3D管理システム</div>
-
+<h1>ICAD HTML 3D Library</h1>
+<div>HTML 3D Viewer Gallery</div>
 </header>
 
 <div class="search">
-
-<input id="searchBox" placeholder="注番検索...">
-
+<input id="search" placeholder="🔍 注番検索">
 </div>
 
-<div class="container" id="list">
-
-
-
-<div class="card">
-
-<div class="info">
-
-<div class="item">
-
-<div class="label">📅 日付</div>
-
-<div class="value">2026/07/14</div>
-
-</div>
-
-<div class="item">
-
-<div class="label">🔖 注番</div>
-
-<div class="value part">JT2857</div>
-
-</div>
-
-<div class="item">
-
-<div class="label">👤 担当</div>
-
-<div class="value">Giang</div>
-
-</div>
-
-</div>
-
-<a class="button" href="html/A001245.html" target="_blank">
-
-🧊 HTML 3D View
-
-</a>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="info">
-
-<div class="item">
-
-<div class="label">📅 日付</div>
-
-<div class="value">2026/07/12</div>
-
-</div>
-
-<div class="item">
-
-<div class="label">🔖 注番</div>
-
-<div class="value part">JT2860</div>
-
-</div>
-
-<div class="item">
-
-<div class="label">👤 担当</div>
-
-<div class="value">Sato</div>
-
-</div>
-
-</div>
-
-<a class="button" href="html/B000531.html" target="_blank">
-
-🧊 HTML 3D View
-
-</a>
-
-</div>
-
-</div>
+<div id="gallery"></div>
 
 <script>
+const products=[
+{part:"JT2857",date:"2026/07/14",viewer:"html/A001245.html"},
+{part:"JT2858",date:"2026/07/14",viewer:"html/A001246.html"},
+{part:"JT2859",date:"2026/07/13",viewer:"html/A001247.html"},
+{part:"JT2860",date:"2026/07/13",viewer:"html/A001248.html"},
+{part:"JT2861",date:"2026/07/12",viewer:"html/A001249.html"},
+{part:"JT2862",date:"2026/07/12",viewer:"html/A001250.html"},
+{part:"JT2863",date:"2026/07/11",viewer:"html/A001251.html"},
+{part:"JT2864",date:"2026/07/11",viewer:"html/A001252.html"},
+{part:"JT2865",date:"2026/07/10",viewer:"html/A001253.html"},
+{part:"JT2866",date:"2026/07/10",viewer:"html/A001254.html"}
+];
 
-const search=document.getElementById("searchBox");
+const gallery=document.getElementById("gallery");
 
-search.addEventListener("keyup",()=>{
+function draw(list){
+ gallery.innerHTML="";
+ list.forEach(p=>{
+  gallery.innerHTML+=`
+  <div class="card">
+   <div class="preview">🧊</div>
+   <div class="info">
+    <div class="part">${p.part}</div>
+    <div class="date">📅 ${p.date}</div>
+    <a class="btn" href="${p.viewer}" target="_blank">🧊 OPEN HTML 3D</a>
+   </div>
+  </div>`;
+ });
+}
+draw(products);
 
-let keyword=search.value.toUpperCase();
-
-document.querySelectorAll(".card").forEach(card=>{
-
-let part=card.querySelector(".part").innerText.toUpperCase();
-
-card.style.display=part.includes(keyword)?"block":"none";
-
+document.getElementById("search").addEventListener("input",e=>{
+ const k=e.target.value.toUpperCase();
+ draw(products.filter(p=>p.part.toUpperCase().includes(k)));
 });
-
-});
-
 </script>
-
 </body>
-
 </html>
